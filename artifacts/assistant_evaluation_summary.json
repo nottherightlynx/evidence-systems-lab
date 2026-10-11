@@ -1,0 +1,10 @@
+{
+  "evaluated_at_utc": "2026-10-11T19:46:16+00:00",
+  "total_tests": 20,
+  "pass": 20,
+  "fail": 0,
+  "blocked": 0,
+  "all_pass": true,
+  "engine": "deterministic phrase/alias router (not LLM/RAG)",
+  "data_scope": "fictional constituent and payment data; simulated source feeds; offline official source"
+}

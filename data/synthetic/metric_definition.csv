@@ -1,0 +1,5 @@
+metric_id,version,grain,inclusion_rule,exclusion_rule,owner,effective_from
+unique_engaged_people,1.0,canonical_entity,Verified identity and registration or attendance in selected period,"Unresolved identities excluded from identified-person count, but reported separately",Demo Data Steward,2026-01-01
+received_contributions,1.0,transaction,status equals received for a unique payment transaction,Exclude pledges; show refunds separately rather than treating them as payments,Demo Finance Owner,2026-01-01
+first_observed_interaction_at,1.0,canonical_entity,Earliest recorded verified engagement event in available history,Do not claim this is the first-ever interaction,Demo Analytics Owner,2026-01-01
+unresolved_engagements,1.0,event,Engagement event has no verified canonical identity,Do not hide missing identity rows with an inner join,Demo Data Steward,2026-01-01

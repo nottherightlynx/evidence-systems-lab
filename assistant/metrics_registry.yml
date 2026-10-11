@@ -1,0 +1,17 @@
+{
+  "unique_constituents": {
+    "aliases": ["unique constituents", "unique engaged people", "how many people engaged"],
+    "description": "Number of distinct verified identities with observed registration/attendance events.",
+    "definition_version": "1.0", "required_role": "public", "handler": "duckdb:unique_constituents"
+  },
+  "received_contributions": {
+    "aliases": ["received contributions", "received payments", "how many verified contributions", "cash received"],
+    "description": "Distinct received payment transactions and gross cash (refunds reported separately).",
+    "definition_version": "1.0", "required_role": "public", "handler": "duckdb:received_contributions"
+  },
+  "stale_sources": {
+    "aliases": ["stale sources", "not fetched sources", "source status", "which sources are stale"],
+    "description": "Declared source statuses from the pipeline source-observability artifact.",
+    "definition_version": "1.0", "required_role": "public", "handler": "csv:source_status"
+  }
+}

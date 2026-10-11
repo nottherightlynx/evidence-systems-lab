@@ -1,0 +1,51 @@
+version: 2
+models:
+  - name: bridge_identity
+    description: "Source-to-canonical identity crosswalk. Unresolved source identities are retained."
+    columns:
+      - name: source_system
+        data_tests: [not_null]
+      - name: source_entity_id
+        data_tests: [not_null]
+      - name: review_status
+        data_tests:
+          - accepted_values:
+              values: ['verified','unresolved']
+  - name: dim_constituent
+    description: "One row per verified canonical constituent, using synthetic IDs."
+    columns:
+      - name: constituent_id
+        data_tests: [unique, not_null]
+  - name: fct_interaction
+    description: "One observed registration or attendance event, including unresolved identities."
+    columns:
+      - name: event_id
+        data_tests: [unique, not_null]
+      - name: event_type
+        data_tests:
+          - accepted_values:
+              values: ['registration','attendance']
+      - name: constituent_id
+        data_tests:
+          - relationships:
+              to: ref('dim_constituent')
+              field: constituent_id
+  - name: fct_contribution
+    description: "One financial source transaction. Pledges are not cash received; refunds are separate negative cash effects."
+    columns:
+      - name: event_id
+        data_tests: [unique, not_null]
+      - name: status
+        data_tests:
+          - accepted_values:
+              values: ['received','pledged','refunded']
+  - name: mart_lifecycle
+    description: "One verified canonical constituent. First *observed* engagement is not first-ever contact or attribution."
+    columns:
+      - name: constituent_id
+        data_tests: [unique, not_null]
+  - name: mart_reconciliation
+    description: "Counts matched and unmatched records without suppressing the latter."
+    columns:
+      - name: domain
+        data_tests: [unique, not_null]

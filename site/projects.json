@@ -1,0 +1,75 @@
+{
+  "summary": {
+    "evaluated_at_utc": "2026-10-11T19:46:16+00:00",
+    "total_tests": 20,
+    "pass": 20,
+    "fail": 0,
+    "blocked": 0,
+    "all_pass": true,
+    "engine": "deterministic phrase/alias router (not LLM/RAG)",
+    "data_scope": "fictional constituent and payment data; simulated source feeds; offline official source",
+    "status_label": "20 / 20 checks passed on last run"
+  },
+  "projects": [
+    {
+      "id": "01",
+      "eyebrow": "DBT + SQL · CRM migration",
+      "title": "Preserving identity and financial meaning across systems",
+      "short": "Reconcile constituents, engagement and contributions while retaining source keys and unmatched events.",
+      "question": "What is lost when a CRM migration treats source IDs and financial stages as interchangeable?",
+      "architecture": "Legacy/new CRM and event/donation seeds → staging → reviewed identity crosswalk → event and contribution facts → dbt tests → lifecycle mart.",
+      "decisions": [
+        "Keep original source IDs while relating verified identities through a bridge.",
+        "LEFT JOIN source events to the crosswalk for reconciliation, preserving unmatched interactions.",
+        "Keep received cash, pledges and refunds as different observed financial facts."
+      ],
+      "evidence": [
+        "Four fictional interactions, three matched events and one unresolved identity.",
+        "A duplicate event ID produced a dbt uniqueness-test failure; restoring the clean seed allowed the build to pass.",
+        "Two verified engaged people, one unresolved engagement, one $25 received payment, a $100 pledge and a $25 refund are present in the synthetic baseline."
+      ],
+      "boundary": "Prototype uses fixed fictional identities, not inferred matches or real CRM constituent data.",
+      "career": "CFLeads Salesforce investment/renewal logic, TLC donor reconciliation, NAACP LDF CRM integrations."
+    },
+    {
+      "id": "02",
+      "eyebrow": "PYTHON + DAGSTER · Public-source reliability",
+      "title": "Distinguishing missing data from missing events",
+      "short": "Normalize inconsistent state-style feeds and expose freshness, schema changes and retrieval history.",
+      "question": "If a jurisdiction returns no records, is the finding truly empty—or did ingestion fail?",
+      "architecture": "Simulated State A/B feeds (+ optional official Federal Register metadata) → Python normalization → validation → source-status report → analyst review.",
+      "decisions": [
+        "Keep source publication time distinct from retrieval time.",
+        "Reject unexpected source-schema changes rather than silently discarding a jurisdiction.",
+        "Label simulated sources as simulated and an unfetched official source as NOT_FETCHED_OFFLINE."
+      ],
+      "evidence": [
+        "An intentional State B field rename caused the normalizer to raise a ValueError.",
+        "After fixture restoration: three normalized simulated records; State A=2 and State B=1.",
+        "The official Federal Register was NOT_FETCHED_OFFLINE in the recorded offline run; a separate successful Dagster five-asset run was documented."
+      ],
+      "boundary": "Demonstrates source-quality handling, not comprehensive monitoring of real state legislation; the schema-failure example ran in the Python pipeline.",
+      "career": "NCTE cross-state legislative monitoring and CFLeads geographic engagement reporting."
+    },
+    {
+      "id": "03",
+      "eyebrow": "GOVERNED QUERIES · Evidence boundary",
+      "title": "Answers that preserve approved definitions",
+      "short": "A deterministic question interface routes to allowlisted metrics, reports rule versions, and refuses unsupported requests.",
+      "question": "Can natural-language-like queries access useful analytical results without changing the rules behind them?",
+      "architecture": "Question → alias-based metric selection → simulated rule filtering → approved DuckDB/CSV calculation → traceable result or refusal.",
+      "decisions": [
+        "The interface does not invent its own financial definitions.",
+        "Refuse unsupported causal, restricted, raw-SQL and date-filter requests.",
+        "Distinguish synthetic rule references from verified public source citations."
+      ],
+      "evidence": [
+        "Recorded results: two engaged people plus one unresolved event, and a $25 receipt with a separate refund.",
+        "The source-status answer reports zero stale feeds and one official feed not fetched.",
+        "The deterministic suite recorded 20/20 checks passing, covering supported metrics and explicit refusals."
+      ],
+      "boundary": "Deterministic phrase router; no LLM, general RAG, true authentication, or production authorization implemented.",
+      "career": "CFLeads Data Wiki, investor and program metric governance, responsible AI pilot design."
+    }
+  ]
+}

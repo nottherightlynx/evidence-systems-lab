@@ -1,0 +1,13 @@
+{
+  "feed": "SIMULATED_STATE_B",
+  "jurisdiction": "SIM-B",
+  "fetched_at": "2026-10-11T18:06:40Z",
+  "items": [
+    {
+      "reference": "SIM-B-001",
+      "heading": "SIMULATED public record B1",
+      "posted_on": "2026-10-02T12:00:00Z",
+      "link": "synthetic://state-b/001"
+    }
+  ]
+}

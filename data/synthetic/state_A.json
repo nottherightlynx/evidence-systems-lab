@@ -1,0 +1,19 @@
+{
+  "feed": "SIMULATED_STATE_A",
+  "jurisdiction": "SIM-A",
+  "retrieved_at": "2026-10-11T18:06:40Z",
+  "records": [
+    {
+      "id": "SIM-A-001",
+      "title": "SIMULATED public record A1",
+      "published_at": "2026-10-01T12:00:00Z",
+      "url": "synthetic://state-a/001"
+    },
+    {
+      "id": "SIM-A-002",
+      "title": "SIMULATED public record A2",
+      "published_at": "2026-10-03T12:00:00Z",
+      "url": "synthetic://state-a/002"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+evidence_lab:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: artifacts/lab.duckdb
+      schema: main
+      threads: 1

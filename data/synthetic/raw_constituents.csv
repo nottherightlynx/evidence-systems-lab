@@ -1,0 +1,4 @@
+source_system,source_entity_id,name,email,jurisdiction
+LEGACY_CRM,LEG-001,Avery Lane,avery@example.invalid,DC
+NEW_CRM,NEW-201,Avery Lane,avery@example.invalid,DC
+NEW_CRM,NEW-202,Morgan Reed,morgan@example.invalid,MD

@@ -1,0 +1,11 @@
+# Tested locally against Python 3.11 with dbt Core 1.x / DuckDB 1.x / Dagster 1.x
+dbt-core>=1.9,<2
+dbt-duckdb>=1.9,<2
+dagster>=1.9,<2
+dagster-webserver>=1.9,<2
+dagster-dbt>=0.25,<1
+duckdb>=1,<2
+pandas>=2,<3
+requests>=2.32,<3
+pytest>=8,<10
+PyYAML>=6,<7

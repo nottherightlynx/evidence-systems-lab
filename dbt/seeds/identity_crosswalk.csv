@@ -1,0 +1,9 @@
+source_system,source_entity_id,canonical_entity_id,match_method,review_status
+LEGACY_CRM,LEG-001,CAN-001,fictional_verified_mapping,verified
+NEW_CRM,NEW-201,CAN-001,fictional_verified_mapping,verified
+NEW_CRM,NEW-202,CAN-002,fictional_verified_mapping,verified
+ENGAGEMENT_APP,APP-101,CAN-001,fictional_verified_mapping,verified
+ENGAGEMENT_APP,APP-202,CAN-002,fictional_verified_mapping,verified
+ENGAGEMENT_APP,APP-999,,no_supportable_match,unresolved
+DONATION_PROCESSOR,DON-501,CAN-001,fictional_verified_mapping,verified
+DONATION_PROCESSOR,DON-502,CAN-002,fictional_verified_mapping,verified

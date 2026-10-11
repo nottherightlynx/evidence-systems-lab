@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Evidence-first portfolio of three synthetic-data analytics engineering case studies: CRM/dbt, public data/Dagster, and governed analytical questions.">
+<title>Evidence Systems Lab — Analytics Engineering Portfolio</title><link rel="stylesheet" href="styles.css"></head>
+<body><a class="skip" href="#main">Skip to content</a>
+<header class="nav"><div class="wrap nav-inner"><a class="brand" href="#top"><span class="brand-mark">E/</span> EVIDENCE SYSTEMS LAB</a>
+<nav aria-label="Main navigation"><a href="#projects">Projects</a><a href="#proof">Checks</a><a href="#method">Methods</a></nav></div></header>
+<main id="main"><section class="hero wrap" id="top"><p class="overline">ANALYTICS ENGINEERING · TECHNICAL CASE STUDIES</p>
+<h1>From source record<br>to <em>defensible answer.</em></h1>
+<p class="intro">Three connected prototypes demonstrate how I approach identity reconciliation, observable data pipelines, and governed analytical access—grounded in experience spanning philanthropic infrastructure and legal advocacy data systems.</p>
+<div class="hero-pills"><span>Python &amp; SQL</span><span>dbt + DuckDB</span><span>Dagster architecture</span><span>Governed analytics</span></div>
+<div class="hero-rule"><strong>Scope:</strong> All demonstration constituent data and state feeds are fictional. The NLP prototype is deterministic; the local-LLM layer is proposed, not implemented.</div></section>
+<section class="flow-section"><div class="wrap"><p class="overline">THE SHARED ENGINEERING QUESTION</p>
+<h2>Can every number be traced?</h2><div class="flow-grid" aria-label="Data lineage flow">
+<div><b>01</b><strong>Source</strong><small>Origin and retrieval</small></div><span aria-hidden="true">→</span>
+<div><b>02</b><strong>Identity</strong><small>Verified relationships</small></div><span aria-hidden="true">→</span>
+<div><b>03</b><strong>Model</strong><small>Tested definitions</small></div><span aria-hidden="true">→</span>
+<div><b>04</b><strong>Answer</strong><small>Evidence + uncertainty</small></div></div></div></section>
+<section class="projects wrap" id="projects"><p class="overline">THREE CONNECTED DEMONSTRATIONS</p><h2>Build the relationships. Test the boundaries.</h2>
+<article class="case" id="project-01">
+ <div class="case-meta">DBT + SQL · CRM migration <span>PROJECT 01</span></div>
+ <h3>Preserving identity and financial meaning across systems</h3><p class="case-short">Reconcile constituents, engagement and contributions while retaining source keys and unmatched events.</p>
+ <p class="question">What is lost when a CRM migration treats source IDs and financial stages as interchangeable?</p>
+ <div class="case-detail"><div><h4>Technical flow</h4><p>Legacy/new CRM and event/donation seeds → staging → reviewed identity crosswalk → event and contribution facts → dbt tests → lifecycle mart.</p></div>
+ <div><h4>Engineering decisions</h4><ul><li>Keep original source IDs while relating verified identities through a bridge.</li>
+<li>LEFT JOIN source events to the crosswalk for reconciliation, preserving unmatched interactions.</li>
+<li>Keep received cash, pledges and refunds as different observed financial facts.</li></ul></div></div>
+ <details><summary>Open observed evidence and limitations</summary><div class="expanded"><h4>Evidence</h4><ul><li>Four fictional interactions, three matched events and one unresolved identity.</li>
+<li>A duplicate event ID produced a dbt uniqueness-test failure; restoring the clean seed allowed the build to pass.</li>
+<li>Two verified engaged people, one unresolved engagement, one $25 received payment, a $100 pledge and a $25 refund are present in the synthetic baseline.</li></ul>
+ <h4>What is not claimed</h4><p>Prototype uses fixed fictional identities, not inferred matches or real CRM constituent data.</p><h4>Experience it connects to</h4><p>CFLeads Salesforce investment/renewal logic, TLC donor reconciliation, NAACP LDF CRM integrations.</p></div></details>
+ </article>
+<article class="case" id="project-02">
+ <div class="case-meta">PYTHON + DAGSTER · Public-source reliability <span>PROJECT 02</span></div>
+ <h3>Distinguishing missing data from missing events</h3><p class="case-short">Normalize inconsistent state-style feeds and expose freshness, schema changes and retrieval history.</p>
+ <p class="question">If a jurisdiction returns no records, is the finding truly empty—or did ingestion fail?</p>
+ <div class="case-detail"><div><h4>Technical flow</h4><p>Simulated State A/B feeds (+ optional official Federal Register metadata) → Python normalization → validation → source-status report → analyst review.</p></div>
+ <div><h4>Engineering decisions</h4><ul><li>Keep source publication time distinct from retrieval time.</li>
+<li>Reject unexpected source-schema changes rather than silently discarding a jurisdiction.</li>
+<li>Label simulated sources as simulated and an unfetched official source as NOT_FETCHED_OFFLINE.</li></ul></div></div>
+ <details><summary>Open observed evidence and limitations</summary><div class="expanded"><h4>Evidence</h4><ul><li>An intentional State B field rename caused the normalizer to raise a ValueError.</li>
+<li>After fixture restoration: three normalized simulated records; State A=2 and State B=1.</li>
+<li>The official Federal Register was NOT_FETCHED_OFFLINE in the recorded offline run; a separate successful Dagster five-asset run was documented.</li></ul>
+ <h4>What is not claimed</h4><p>Demonstrates source-quality handling, not comprehensive monitoring of real state legislation; the schema-failure example ran in the Python pipeline.</p><h4>Experience it connects to</h4><p>NCTE cross-state legislative monitoring and CFLeads geographic engagement reporting.</p></div></details>
+ </article>
+<article class="case" id="project-03">
+ <div class="case-meta">GOVERNED QUERIES · Evidence boundary <span>PROJECT 03</span></div>
+ <h3>Answers that preserve approved definitions</h3><p class="case-short">A deterministic question interface routes to allowlisted metrics, reports rule versions, and refuses unsupported requests.</p>
+ <p class="question">Can natural-language-like queries access useful analytical results without changing the rules behind them?</p>
+ <div class="case-detail"><div><h4>Technical flow</h4><p>Question → alias-based metric selection → simulated rule filtering → approved DuckDB/CSV calculation → traceable result or refusal.</p></div>
+ <div><h4>Engineering decisions</h4><ul><li>The interface does not invent its own financial definitions.</li>
+<li>Refuse unsupported causal, restricted, raw-SQL and date-filter requests.</li>
+<li>Distinguish synthetic rule references from verified public source citations.</li></ul></div></div>
+ <details><summary>Open observed evidence and limitations</summary><div class="expanded"><h4>Evidence</h4><ul><li>Recorded results: two engaged people plus one unresolved event, and a $25 receipt with a separate refund.</li>
+<li>The source-status answer reports zero stale feeds and one official feed not fetched.</li>
+<li>The deterministic suite recorded 20/20 checks passing, covering supported metrics and explicit refusals.</li></ul>
+ <h4>What is not claimed</h4><p>Deterministic phrase router; no LLM, general RAG, true authentication, or production authorization implemented.</p><h4>Experience it connects to</h4><p>CFLeads Data Wiki, investor and program metric governance, responsible AI pilot design.</p></div></details>
+ </article>
+</section>
+<section class="proof-section" id="proof"><div class="wrap"><p class="overline">REPRODUCIBLE EVIDENCE</p><h2>Quality checks, including deliberate failure.</h2>
+<p class="lead">Baseline recorded output confirmed approved query results and explicit refusals. The expanded evaluation suite records 20 predefined questions, expected metrics, cited-rule metadata and reasons for refusal.</p>
+<div class="eval-bar"><div><strong>20 passed · 0 failed · 0 blocked</strong><small>20 / 20 checks passed on last run</small></div><div class="eval-date">Last expanded run<br>2026-10-11T19:46:16+00:00</div></div>
+<div class="table-scroll"><table><caption>20-question baseline evaluation — local execution, not a generative-AI penetration test</caption><thead><tr><th>ID</th><th>Question class</th><th>Result</th></tr></thead><tbody><tr><td>Q01</td><td>supported-source</td><td><span class="status pass">PASS</span></td></tr>
+<tr><td>Q02</td><td>supported-source</td><td><span class="status pass">PASS</span></td></tr>
+<tr><td>Q03</td><td>supported-source</td><td><span class="status pass">PASS</span></td></tr>
+<tr><td>Q04</td><td>supported-identity</td><td><span class="status pass">PASS</span></td></tr>
+<tr><td>Q05</td><td>supported-identity</td><td><span class="status pass">PASS</span></td></tr>
+<tr><td>Q06</td><td>supported-identity</td><td><span class="status pass">PASS</span></td></tr>
+<tr><td>Q07</td><td>supported-finance</td><td><span class="status pass">PASS</span></td></tr>
+<tr><td>Q08</td><td>supported-finance</td><td><span class="status pass">PASS</span></td></tr>
+<tr><td>Q09</td><td>unsupported-causal</td><td><span class="status pass">PASS</span></td></tr>
+<tr><td>Q10</td><td>unsupported-causal</td><td><span class="status pass">PASS</span></td></tr>
+<tr><td>Q11</td><td>restricted</td><td><span class="status pass">PASS</span></td></tr>
+<tr><td>Q12</td><td>restricted</td><td><span class="status pass">PASS</span></td></tr>
+<tr><td>Q13</td><td>raw-sql</td><td><span class="status pass">PASS</span></td></tr>
+<tr><td>Q14</td><td>raw-sql</td><td><span class="status pass">PASS</span></td></tr>
+<tr><td>Q15</td><td>unsupported-filter</td><td><span class="status pass">PASS</span></td></tr>
+<tr><td>Q16</td><td>unsupported-filter</td><td><span class="status pass">PASS</span></td></tr>
+<tr><td>Q17</td><td>wrong-rule-version</td><td><span class="status pass">PASS</span></td></tr>
+<tr><td>Q18</td><td>wrong-rule-version</td><td><span class="status pass">PASS</span></td></tr>
+<tr><td>Q19</td><td>unknown-question</td><td><span class="status pass">PASS</span></td></tr>
+<tr><td>Q20</td><td>ambiguous-metric</td><td><span class="status pass">PASS</span></td></tr></tbody></table></div>
+<div class="media-pair"><figure><img src="assets/evidence_assistant_baseline_flow.png" loading="lazy" alt="Implemented assistant architecture: question routed through approved metric, permission and supported-operation checks to result or refusal"><figcaption>Implemented deterministic baseline. Rule retrieval is constrained in this demo.</figcaption></figure>
+<figure><img src="assets/proposed_local_llm_architecture.png" loading="lazy" alt="Future design: natural-language question, locally hosted LLM, authorized retrieval, approved metric selection, validation, dbt DuckDB, evidence-backed response"><figcaption>Future proposal, <strong>not implemented</strong>: local inference and authorized document retrieval.</figcaption></figure></div>
+</div></section>
+<section class="method wrap" id="method"><p class="overline">METHOD AND LIMITATIONS</p><h2>What the experiments do—and don't—prove.</h2>
+<div class="method-cols"><div><h3>Engineering approach</h3><p>Preserve source identifiers and unmatched records; declare event grain; distinguish financial statuses; monitor geographic data-source health; keep queries within documented metric definitions.</p></div>
+<div><h3>Limits disclosed</h3><p>No employer data, real voter information, complete source coverage, causal attribution, production authorization or deployed LLM is represented. A local language model does not independently establish privacy compliance.</p></div>
+<div><h3>Professional throughline</h3><p>CRM investment and program data at CFLeads, data systems at TLC and NAACP LDF, legislative and voter analytics at NCTE, and SQL/data modeling experience at Quicken/Rocket Mortgage.</p></div></div>
+<div class="method-links"><a href="https://docs.getdbt.com/docs/build/data-tests" rel="noopener noreferrer" target="_blank">dbt testing documentation ↗</a><a href="https://docs.dagster.io/" rel="noopener noreferrer" target="_blank">Dagster documentation ↗</a><a href="https://www.federalregister.gov/developers/documentation/api/v1" rel="noopener noreferrer" target="_blank">Federal Register API ↗</a></div></section></main>
+<footer><div class="wrap"><strong>EVIDENCE SYSTEMS LAB</strong><span>Static case-study prototype · No trackers · Synthetic demo data only</span></div></footer>
+</body></html>

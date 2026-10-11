@@ -1,0 +1,6 @@
+source_id,authority,jurisdiction,URL,access_class,expected_cadence
+LEGACY_CRM,Fictional legacy CRM,US,synthetic://legacy-crm,synthetic,manual
+NEW_CRM,Fictional replacement CRM,US,synthetic://new-crm,synthetic,manual
+ENGAGEMENT_APP,Fictional engagement tool,US,synthetic://engagement,synthetic,manual
+DONATION_PROCESSOR,Fictional payment tool,US,synthetic://payments,synthetic,manual
+FEDERAL_REGISTER,Federal Register,US,https://www.federalregister.gov/developers/documentation/api/v1,public,daily

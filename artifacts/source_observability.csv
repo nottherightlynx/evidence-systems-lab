@@ -1,0 +1,4 @@
+source_id,jurisdiction,kind,document_count,last_retrieved_at,status,coverage_note
+SIMULATED_STATE_A,SIM-A,SIMULATED,2,2026-10-11T20:58:56Z,CURRENT,SIMULATED: only fixture records; not jurisdiction coverage
+SIMULATED_STATE_B,SIM-B,SIMULATED,1,2026-10-11T20:58:56Z,CURRENT,SIMULATED: only fixture records; not jurisdiction coverage
+FEDERAL_REGISTER,US,PUBLIC_OFFICIAL,0,,NOT_FETCHED_OFFLINE,Not fetched in offline demo
